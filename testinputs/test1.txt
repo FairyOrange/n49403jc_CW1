@@ -1,0 +1,28 @@
+1
+2
+3ayayayaysssssss
+4
+5
+6
+7
+8
+9
+0sda
+1
+
+
+sdasc
+aqw
+
+NIHAO
+
+fdgrrynm
+
+Futher discussion
+This isn’t perfect in a number of easy ways from a number of different perspectives. For example:
+
+As a test writer or reader, having to enter subprocess.check_output('...', shell=True) is annoying. The only part that is really the test is the quoted first argument, so most of the line is “boilerplate”.
+As a test writer or reader, the output format also is pretty nasty and doesn’t look like what you’d see at the bash shell. This makes writing tests harder (I can’t just copy and paste bash shell output, but have to transform it) as well as reading them (esp. if there are multiple lines of output).
+As a tester, the fact that import subprocess is treated as a test seems wrong. That’s not a test, but some precursors of a test.
+As a test runner, you don’t want the way of invoking the system under test to be too system dependent. E.g., if I’m running wc.py on a lab machine, I need to use python3 to run it, whereas on other machines python is sufficient.
+Problems 1 and 2 can be mitigated by creating a new function with a short name that massaged the output appropriately.
